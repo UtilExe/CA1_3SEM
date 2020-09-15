@@ -1,10 +1,13 @@
 package facades;
 
+import MembersDTO.MembersDTO;
 import entities.Members;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -37,15 +40,31 @@ public class MembersFacade {
     }
     
     //TODO Remove/Change this before use
-    public long getRenameMeCount(){
+    public long getMembersCount(){
         EntityManager em = emf.createEntityManager();
         try{
-            long renameMeCount = (long)em.createQuery("SELECT COUNT(r) FROM RenameMe r").getSingleResult();
-            return renameMeCount;
+            long MembersCount = (long)em.createQuery("SELECT COUNT(m) FROM Members m").getSingleResult();
+            return MembersCount;
         }finally{  
             em.close();
         }
-        
+    }
+    
+    //Jannich
+    public List<MembersDTO> getAllMembers() {
+        EntityManager em = emf.createEntityManager();
+        List<Members> listen = new ArrayList();
+        List<MembersDTO> listMembers = new ArrayList();
+        try {
+            TypedQuery<Members> query = em.createQuery("SELECT m FROM Members m", Members.class);
+            listen = query.getResultList();
+            for (Members member : listen) {
+                listMembers.add(new MembersDTO(member));
+            }
+            return listMembers;
+        } finally {
+            em.close();
+        }
     }
 
 }
