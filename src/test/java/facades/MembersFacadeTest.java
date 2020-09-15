@@ -1,6 +1,6 @@
 package facades;
 
-import MembersDTO.MembersDTO;
+import DTO.MembersDTO;
 import utils.EMF_Creator;
 import entities.Members;
 import java.util.List;

@@ -1,6 +1,6 @@
 package facades;
 
-import MembersDTO.MembersDTO;
+import DTO.MembersDTO;
 import entities.Members;
 import java.util.ArrayList;
 import java.util.List;

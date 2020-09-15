@@ -1,5 +1,5 @@
 
-package MembersDTO;
+package DTO;
 
 import entities.Members;
 
@@ -10,11 +10,11 @@ public class MembersDTO {
     private String name;
     private String favoriteTVSeries;
     
-    public MembersDTO(Members membersDTO) {
-        this.Id = membersDTO.getId();
-        this.studentID = membersDTO.getStudentID();
-        this.name = membersDTO.getName();
-        this.favoriteTVSeries = membersDTO.getFavoriteTVSeries();
+    public MembersDTO(Members member) {
+        this.Id = member.getId();
+        this.studentID = member.getStudentID();
+        this.name = member.getName();
+        this.favoriteTVSeries = member.getFavoriteTVSeries();
     }
 
     public Long getId() {
