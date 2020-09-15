@@ -1,10 +1,60 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Start Page</title>
+        <title>Welcome!</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
-        <h1>Change or remove this page</h1>
+        <!-- Index page created by Daniel. -->
+            <div class="row">
+                <div class="col-2"></div>
+                
+                <div class="col-8">
+                    <h1 class="pb-2 pt-2 text-center marginSpace">Group name: Awesome group</h1>
+                    <div class="lineUnder marginSpace"></div>
+                    <h2>Class: D</h2>
+                    <h3 class="pb-2">Members (loaded from a REST API)</h3>
+                    
+                    
+                    <div id="membersTable">
+                        <!-- Members will be loaded here from JavaScript using the blueprint below. -->
+                        <table class="table table-striped tableStyle">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Student ID</th>
+                                    <th>Favorite TV-series</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Member Example</td>
+                                    <td>cph-id123</td>
+                                    <td>The Simpsons</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <form class="pb-4">
+                        <input class="btn btn-outline-secondary" type="submit" value="Reload Names">
+                    </form>
+                    
+                    <div class="lineUnder"></div>
+                    <h3 class="pt-4">Links</h3>
+                    <ul>
+                        <li><a href="https://docs.google.com/document/d/1kygGaPB1zXrcuSHAmRiN66rizZTYszUExMKjN12Du4w/edit" target="_blank">Who did what and our group contract</a></li>
+                        <li><a href="#">Our cool jokes page</a></li>
+                        <li><a href="https://github.com/VeraUtil/CA1_3SEM" target="_blank">Our GitHub Repo</a></li>
+                        <li><a href="#">Our Cars for sale page (optional)</a></li>
+                    </ul>
+        
+                </div>   
+                    
+                <div class="col-2"></div>
+            </div>
     </body>
 </html>

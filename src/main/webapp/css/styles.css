@@ -1,0 +1,20 @@
+
+.tableStyle {
+    border-bottom: 2px solid lightgray;
+}
+
+.outsideCenterDiv {
+    background-color: red;
+}
+
+.lineUnder {
+    border-bottom: 1px solid grey;
+    /*max-width: 90%;
+    margin: auto;*/
+}
+
+.marginSpace {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
