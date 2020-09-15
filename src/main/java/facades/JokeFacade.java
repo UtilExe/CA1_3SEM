@@ -7,6 +7,7 @@ import entities.Joke;
 import entities.Members;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
@@ -61,6 +62,33 @@ public class JokeFacade {
         } finally {
             em.close();
         }
+    }
+    
+    private static long getJokeCount(){
+        EntityManager em = emf.createEntityManager();
+        try{
+            long JokeCount = (long)em.createQuery("SELECT COUNT(m) FROM Joke m").getSingleResult();
+            return JokeCount;
+        }finally{  
+            em.close();
+        }
+    }
+    
+    public JokeDTO getRandomJoke(){
+        long jokeCount = getJokeCount();
+        EntityManager em = emf.createEntityManager();
+        Random number = new Random();
+        Long randomNumber = (long)number.nextInt((int) jokeCount);
+        randomNumber += 1;
+        
+        try{
+            Joke joke = em.find(Joke.class, randomNumber);
+            return new JokeDTO(joke);
+            
+        }finally{
+            em.close();
+        }
+        
     }
     
 }
