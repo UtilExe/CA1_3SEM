@@ -1,7 +1,7 @@
 package facades;
 
 import utils.EMF_Creator;
-import entities.RenameMe;
+import entities.Members;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import org.junit.jupiter.api.AfterAll;
@@ -13,18 +13,18 @@ import org.junit.jupiter.api.Test;
 
 //Uncomment the line below, to temporarily disable this test
 //@Disabled
-public class FacadeExampleTest {
+public class MembersFacadeTest {
 
     private static EntityManagerFactory emf;
-    private static FacadeExample facade;
+    private static MembersFacade facade;
 
-    public FacadeExampleTest() {
+    public MembersFacadeTest() {
     }
 
     @BeforeAll
     public static void setUpClass() {
        emf = EMF_Creator.createEntityManagerFactoryForTest();
-       facade = FacadeExample.getFacadeExample(emf);
+       facade = MembersFacade.getFacadeExample(emf);
     }
 
     @AfterAll
@@ -40,9 +40,9 @@ public class FacadeExampleTest {
         try {
             em.getTransaction().begin();
             em.createNamedQuery("RenameMe.deleteAllRows").executeUpdate();
-            em.persist(new RenameMe("Some txt", "More text"));
-            em.persist(new RenameMe("aaa", "bbb"));
-
+         /*   em.persist(new Member("Some txt", "More text"));
+            em.persist(new Member("aaa", "bbb"));
+*/
             em.getTransaction().commit();
         } finally {
             em.close();
