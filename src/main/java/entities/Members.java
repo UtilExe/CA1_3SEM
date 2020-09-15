@@ -23,6 +23,8 @@ public class Members implements Serializable {
     private String name;
     @Column(name="favorite_tv_series", nullable = false)
     private String favoriteTVSeries;
+    @Column(name="phone_number", nullable = false)
+    private int phoneNumber;
     
     public Members() {
     }
@@ -58,5 +60,15 @@ public class Members implements Serializable {
     public void setStudentID(String studentID) {
         this.studentID = studentID;
     }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+    
+    
    
 }
