@@ -68,8 +68,8 @@ public class MembersFacadeTest {
 
     // TODO: Delete or change this method 
     @Test
-    public void testAFacadeMethod() {
-        assertEquals(4, facade.getMembersCount(), "Expects two rows in the database");
+    public void testGetMembersCount() {
+        assertEquals(facade.getMembersCount(), 4, "Expects four rows in the database");
     }
     
     //Jannich

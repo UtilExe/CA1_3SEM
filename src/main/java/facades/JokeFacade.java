@@ -64,7 +64,7 @@ public class JokeFacade {
         }
     }
     
-    private static long getJokeCount(){
+    public static long getJokeCount(){
         EntityManager em = emf.createEntityManager();
         try{
             long JokeCount = (long)em.createQuery("SELECT COUNT(m) FROM Joke m").getSingleResult();
@@ -87,8 +87,7 @@ public class JokeFacade {
             
         }finally{
             em.close();
-        }
-        
+        } 
     }
     
 }

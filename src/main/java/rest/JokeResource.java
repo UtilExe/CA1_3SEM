@@ -44,4 +44,18 @@ public class JokeResource {
     public String getRandomJoke(){
         return gson.toJson(facade.getRandomJoke());
     }
+    
+    @Path("count")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getJokeCount() {
+        long count = facade.getJokeCount();
+        
+        return "{\"count\":"+count+"}";
+    }
+    
+    
+    
+    
+    
 }
