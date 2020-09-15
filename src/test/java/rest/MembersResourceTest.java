@@ -14,6 +14,7 @@ import org.glassfish.grizzly.http.util.HttpStatus;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItems;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,7 +26,7 @@ public class MembersResourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
-    private static Members r1,r2;
+    private static Members jannich, emil, daniel, jimmy;
     
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
@@ -62,13 +63,17 @@ public class MembersResourceTest {
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
-     /*   r1 = new Member("Some txt","More text");
-        r2 = new Member("aaa","bbb");*/
+        jannich = new Members("cph-jm312", "Jannich Højmose Møller", "South Park", 23656270);
+        emil = new Members("cph-eg60", "Emil Andreas Grønlund", "Blind Spot", 29864519);
+        daniel = new Members("cph-db125", "Daniel Bengtsen", "Family Guy", 41600352);
+        jimmy = new Members("cph-jp327", "Jimmy Pham", "Prison Break", 61652893);
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("RenameMe.deleteAllRows").executeUpdate();
-            em.persist(r1);
-            em.persist(r2); 
+            em.createNamedQuery("Members.deleteAllRows").executeUpdate();
+            em.persist(jannich);
+            em.persist(emil);
+            em.persist(daniel);
+            em.persist(jimmy);
             em.getTransaction().commit();
         } finally { 
             em.close();
@@ -78,7 +83,7 @@ public class MembersResourceTest {
     @Test
     public void testServerIsUp() {
         System.out.println("Testing is server UP");
-        given().when().get("/xxx").then().statusCode(200);
+        given().when().get("/groupmembers").then().statusCode(200);
     }
    
     //This test assumes the database contains two rows
@@ -86,19 +91,30 @@ public class MembersResourceTest {
     public void testDummyMsg() throws Exception {
         given()
         .contentType("application/json")
-        .get("/xxx/").then()
+        .get("/groupmembers/").then()
         .assertThat()
         .statusCode(HttpStatus.OK_200.getStatusCode())
         .body("msg", equalTo("Hello World"));   
     }
     
     @Test
-    public void testCount() throws Exception {
+    public void testMembersCount() throws Exception {
         given()
         .contentType("application/json")
-        .get("/xxx/count").then()
+        .get("/groupmembers/count").then()
         .assertThat()
         .statusCode(HttpStatus.OK_200.getStatusCode())
-        .body("count", equalTo(2));   
+        .body("count", equalTo(4));   
+    }
+    
+    //Jannich
+    @Test
+    public void testGetAllMembers() throws Exception {
+        given()
+        .contentType("application/json")
+        .get("/groupmembers/all").then()
+        .assertThat()
+        .statusCode(HttpStatus.OK_200.getStatusCode())
+        .body("name", hasItems("Jannich Højmose Møller", "Daniel Bengtsen", "Emil Andreas Grønlund", "Jimmy Pham"));
     }
 }

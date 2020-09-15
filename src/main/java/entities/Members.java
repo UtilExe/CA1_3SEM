@@ -17,7 +17,7 @@ public class Members implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
-    @Column(name="student_id", length=6, nullable = false)
+    @Column(name="student_id", length=9, nullable = false)
     private String studentID;
     @Column(name="name", length=128, nullable = false)
     private String name;
@@ -25,6 +25,13 @@ public class Members implements Serializable {
     private String favoriteTVSeries;
     @Column(name="phone_number", nullable = false)
     private int phoneNumber;
+
+    public Members(String studentID, String name, String favoriteTVSeries, int phoneNumber) {
+        this.studentID = studentID;
+        this.name = name;
+        this.favoriteTVSeries = favoriteTVSeries;
+        this.phoneNumber = phoneNumber;
+    }
     
     public Members() {
     }

@@ -1,9 +1,14 @@
 package facades;
 
+import MembersDTO.MembersDTO;
 import utils.EMF_Creator;
 import entities.Members;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,6 +22,7 @@ public class MembersFacadeTest {
 
     private static EntityManagerFactory emf;
     private static MembersFacade facade;
+    private Members jannich, emil, daniel, jimmy;
 
     public MembersFacadeTest() {
     }
@@ -37,12 +43,17 @@ public class MembersFacadeTest {
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
+        jannich = new Members("cph-jm312", "Jannich Højmose Møller", "South Park", 23656270);
+        emil = new Members("cph-eg60", "Emil Andreas Grønlund", "Blind Spot", 29864519);
+        daniel = new Members("cph-db125", "Daniel Bengtsen", "Family Guy", 41600352);
+        jimmy = new Members("cph-jp327", "Jimmy Pham", "Prison Break", 61652893);
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("RenameMe.deleteAllRows").executeUpdate();
-         /*   em.persist(new Member("Some txt", "More text"));
-            em.persist(new Member("aaa", "bbb"));
-*/
+            em.createNamedQuery("Members.deleteAllRows").executeUpdate();
+            em.persist(jannich);
+            em.persist(emil);
+            em.persist(daniel);
+            em.persist(jimmy);
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -57,7 +68,14 @@ public class MembersFacadeTest {
     // TODO: Delete or change this method 
     @Test
     public void testAFacadeMethod() {
-        assertEquals(2, facade.getRenameMeCount(), "Expects two rows in the database");
+        assertEquals(4, facade.getMembersCount(), "Expects two rows in the database");
+    }
+    
+    //Jannich
+    @Test
+    public void testGetAllMembers() {
+        List<MembersDTO> result = facade.getAllMembers();
+        assertThat(result, hasSize(4));
     }
 
 }

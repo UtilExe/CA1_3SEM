@@ -19,20 +19,29 @@ public class MembersResource {
     //An alternative way to get the EntityManagerFactory, whithout having to type the details all over the code
     //EMF = EMF_Creator.createEntityManagerFactory(DbSelector.DEV, Strategy.CREATE);
     
-    private static final MembersFacade FACADE =  MembersFacade.getFacadeExample(EMF);
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+    private static final MembersFacade facade =  MembersFacade.getFacadeExample(EMF);
+    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
             
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String demo() {
         return "{\"msg\":\"Hello World\"}";
     }
+    
     @Path("count")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public String getRenameMeCount() {
-        long count = FACADE.getRenameMeCount();
+    public String getMembersCount() {
+        long count = facade.getMembersCount();
         //System.out.println("--------------->"+count);
         return "{\"count\":"+count+"}";  //Done manually so no need for a DTO
+    }  
+    
+    //Jannich
+    @Path("all")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllMembers() {
+        return gson.toJson(facade.getAllMembers());
     }
 }
