@@ -37,7 +37,6 @@ public class MembersResource {
         return "{\"count\":"+count+"}";  //Done manually so no need for a DTO
     }  
     
-    //Jannich
     @Path("all")
     @GET
     @Produces(MediaType.APPLICATION_JSON)

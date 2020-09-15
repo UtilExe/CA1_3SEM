@@ -8,6 +8,7 @@ import facades.MembersFacade;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -29,8 +30,6 @@ public class JokeResource {
         return "{\"msg\":\"Hello World\"}";
     }
     
-    
-    //Jannich
     @Path("all")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -54,6 +53,12 @@ public class JokeResource {
         return "{\"count\":"+count+"}";
     }
     
+    @Path("/id/{id}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getJokeByID(@PathParam("id") long id) {
+        return gson.toJson(facade.getJokeByID(id));
+    }
     
     
     

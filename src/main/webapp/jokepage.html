@@ -24,14 +24,16 @@
                     </div>
                     
                     <form class="pb-4">
-                       <input type="text" id="fetch" name="fetch" value=""><br>
+                        <input type="text" id="fetch" name="fetch" placeholder="Type ID..."><br><br>
                        <button id="buttonFetch" class="btn btn-outline-secondary" name="buttonFetch">Fetch</button>
                        <br><br>
-                       <button id="getAllJokesBtn" class="btn btn-outline-secondary">Get Random Joke</button>
+                       <button id="getRandomJokeBtn" class="btn btn-outline-secondary">Get Random Joke</button>
                        <input type="hidden" name="hidden" value="test">
                     </form>
                     
-                    <script src="fetch.js" async defer></script>
+                    <p id="myJoke"></p>
+                    
+                    <script src="fetchJoke.js" async defer></script>
                     
                     
                 <div class="col-2"></div>

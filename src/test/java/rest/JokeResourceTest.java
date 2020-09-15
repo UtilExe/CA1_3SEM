@@ -121,7 +121,6 @@ public class JokeResourceTest {
         .body("type", hasItems("Bogstavelig", "Computer jokes", "Blondine jokes", "Blondine jokes"));
     }
     
-    @Disabled
     @Test
     public void testGetRandomJoke() throws Exception {
         given()
@@ -132,4 +131,13 @@ public class JokeResourceTest {
         .body("size()", is(4));
     }
     
+    @Test
+    public void testGetJokeByID() {
+        given()
+        .contentType("application/json")
+        .get("/jokes/id/" + joke1.getId()).then()
+        .assertThat()
+        .statusCode(HttpStatus.OK_200.getStatusCode())
+        .body("joke", equalTo(joke1.getJoke()));
+    }
 }

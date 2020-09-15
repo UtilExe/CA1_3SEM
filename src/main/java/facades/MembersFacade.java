@@ -50,7 +50,6 @@ public class MembersFacade {
         }
     }
     
-    //Jannich
     public List<MembersDTO> getAllMembers() {
         EntityManager em = emf.createEntityManager();
         List<Members> listen = new ArrayList();
