@@ -50,12 +50,12 @@ public class JokeFacade {
     
     public List<JokeDTO> getAllJokes() {
         EntityManager em = emf.createEntityManager();
-        List<Joke> listen = new ArrayList();
+        List<Joke> jokeList = new ArrayList();
         List<JokeDTO> listJokes = new ArrayList();
         try {
-            TypedQuery<Joke> query = em.createQuery("SELECT m FROM Joke m", Joke.class);
-            listen = query.getResultList();
-            for (Joke joke : listen) {
+            TypedQuery<Joke> query = em.createQuery("SELECT j FROM Joke j", Joke.class);
+            jokeList = query.getResultList();
+            for (Joke joke : jokeList) {
                 listJokes.add(new JokeDTO(joke));
             }
             return listJokes;
