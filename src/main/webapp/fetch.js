@@ -8,7 +8,7 @@ getAllMembersBtn.addEventListener('click', (event) => {
 function fetchAllMembers() {
     let url = 'https://www.work.emucoach.com/CA1/api/groupmembers/all';
     let membersTable = document.getElementById("membersTable");
-    fetch(url, {mode:'no-cors'})
+    fetch(url)
         .then(res => res.json())
         .then(data => {
             let newArray = data.map(x => `<tr><td>${x.name}</td><td>${x.studentID}</td><td>${x.favoriteTVSeries}</td></tr>`)
