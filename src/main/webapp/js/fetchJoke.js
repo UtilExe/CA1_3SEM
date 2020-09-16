@@ -15,7 +15,7 @@ let myJoke = document.getElementById("myJoke");
 
 
 function getRandomJoke() {
-    let url = 'https://work.emucoach.com/CA1/api/jokes/random';
+    let url = '../api/jokes/random';
     fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -24,7 +24,7 @@ function getRandomJoke() {
 }
 
 function getJokeByID(id) {
-    let url = 'https://work.emucoach.com/CA1/api/jokes/id/' + id;
+    let url = '../api/jokes/id/' + id;
     fetch(url)
             .then(res => res.json())
             .then(data => {

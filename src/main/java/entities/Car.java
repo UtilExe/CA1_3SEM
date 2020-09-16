@@ -27,7 +27,7 @@ public class Car implements Serializable {
     private String model;
     @Column(name="price", nullable = false)
     private double price;
-    @Column(name="created", nullable = false)
+    @Column(name="created")
     @Temporal(TemporalType.DATE)
     private Date created;
     @Column(name="owner", nullable = false)
