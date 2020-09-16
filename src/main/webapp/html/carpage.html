@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cars for sale</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="../css/styles.css">
+    </head>
+    <body>
+            <div class="row">
+                <div class="col-2"></div>
+                
+                <div class="col-8">
+                    <h1 class="pb-2 pt-2 text-center marginSpace">Our Cars for Sale</h1>
+                    <div class="lineUnder marginSpace"></div>
+                    <h3 class="pb-2">List of Cars (loaded from a REST API)</h3>
+                    
+                    <form class="pb-4">
+                        <button id="buttonSortPrice" class="btn btn-outline-secondary" name="buttonFetch">Sort by price</button>
+                        <button id="buttonSortYear" class="btn btn-outline-secondary">Sort by year</button>
+                        <button id="buttonRecommended" class="btn btn-outline-success">Recommened car</button>
+                        <div class="pt-4 form-inline">
+                            <input class="form-control col-2" type="text" id="inputFilterMake" name="inputFilterMake" placeholder="Type make...">
+                            <button id="buttonFilterMake" class="btn btn-outline-secondary" name="buttonFilterMake">Filter by make</button>
+                        </div>
+                    </form>
+                    
+                    <div id="carsTable">
+                        <!-- Cars will be loaded here from JavaScript using the blueprint below. -->
+                        
+                    </div>
+                    
+                    <script src="../js/fetchCar.js" async defer></script>
+                    
+                    
+                <div class="col-2"></div>
+            </div>
+    </body>
+</html>
