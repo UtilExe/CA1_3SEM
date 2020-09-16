@@ -6,7 +6,7 @@ getAllMembersBtn.addEventListener('click', (event) => {
 
 
 function fetchAllMembers() {
-    let url = 'https://work.emucoach.com/CA1/api/groupmembers/all';
+    let url = 'https://work.emucoach.com/CA1/api/groupmembers/all.';
     let membersTable = document.getElementById("membersTable");
     fetch(url)
         .then(res => res.json())
