@@ -74,10 +74,12 @@ function sortCarsByYear() {
 //Perhaps make it possible to search with lowercase and not full make e.g. 'volk' for Volkswagen
 function getCarsByMake() {
     let url = '../api/cars/all';
+    let searchWord = document.getElementById("inputFilterMake").value;
     fetch(url)
             .then(res => res.json())
             .then(data => {
-                let newArray = data.filter(x => x.make.includes(document.getElementById("inputFilterMake").value));
+                let newArray = data.filter(x => x.make.includes( capFirstLetter(searchWord) ));
+                console.log(newArray);
                 newArray = newArray.map(x => `<tr><td>${x.id}</td><td>${x.year}</td><td>${x.make}</td><td>${x.model}</td><td>${x.price}</td></tr>`);
                 carsTable.innerHTML =
                         `<table class="table table-striped tableStyle">
@@ -85,6 +87,12 @@ function getCarsByMake() {
                             ${newArray.join('')}
                          </table>`
     })
+}
+
+function capFirstLetter(word) {
+    word = word.toLowerCase();
+    word = word.charAt(0).toUpperCase() + word.slice(1);
+    return word;
 }
 
 function fetchAllCars() {
