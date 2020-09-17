@@ -26,7 +26,7 @@ buttonRecommended.addEventListener('click', (event) => {
 })
 
 function getRecommendedCar() {
-    let url = '../CA1/api/cars/all';
+    let url = '../api/cars/all';
     fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -42,7 +42,7 @@ function getRecommendedCar() {
 }
 
 function sortCarsByPrice() {
-    let url = '../CA1/api/cars/all';
+    let url = '../api/cars/all';
     fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -57,7 +57,7 @@ function sortCarsByPrice() {
 }
 
 function sortCarsByYear() {
-    let url = '../CA1/api/cars/all';
+    let url = '../api/cars/all';
     fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -73,7 +73,7 @@ function sortCarsByYear() {
 
 //Perhaps make it possible to search with lowercase and not full make e.g. 'volk' for Volkswagen
 function getCarsByMake() {
-    let url = '../CA1/api/cars/all';
+    let url = '../api/cars/all';
     fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -88,7 +88,7 @@ function getCarsByMake() {
 }
 
 function fetchAllCars() {
-    let url = '../CA1/api/cars/all';
+    let url = '../api/cars/all';
     fetch(url)
             .then(res => res.json())
             .then(data => {
